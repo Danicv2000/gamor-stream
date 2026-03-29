@@ -96,16 +96,12 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
   };
 
   return (
-    <div 
-      className={styles.layoutCard}
-      style={{ flexDirection: layoutCfg.flexDirection }}
-    >
+    <div className={styles.layoutCard}>
       <div 
         className={styles.colLeft} 
         style={{ 
           padding: titleCfg.padding,
           minHeight: layoutCfg.colLeftMinHeight,
-          width: layoutCfg.colLeftWidth
         }}
       >
         <svg
@@ -196,7 +192,6 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
         className={styles.colMid}
         style={{
           minHeight: layoutCfg.colMidMinHeight,
-          width: layoutCfg.colMidWidth
         }}
       >
         <div className={styles.heroGradient}></div>
@@ -406,7 +401,6 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
         className={styles.colRight}
         style={{
           minHeight: layoutCfg.colRightMinHeight,
-          width: layoutCfg.colRightWidth,
           justifyContent: layoutCfg.colRightJustifyContent,
           padding: layoutCfg.colRightPadding
         }}
