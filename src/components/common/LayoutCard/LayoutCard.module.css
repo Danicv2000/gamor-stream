@@ -149,7 +149,7 @@
 }
 
 .btnPrimary:hover {
-  background-color: #1f2937;
+  background-color: #e2e8f0;
   transform: translateY(-2px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
 }
@@ -591,7 +591,7 @@
 
 .divider {
   border: 0;
-  border-top: 2px solid #2a2f38;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
   margin: 0;
 }
 
@@ -643,7 +643,7 @@
 }
 
 .playerRow:hover {
-  background-color: #2a2f38;
+  background-color: rgba(255, 255, 255, 0.05);
   border-radius: 0.5rem;
   padding: 0.25rem;
 }
