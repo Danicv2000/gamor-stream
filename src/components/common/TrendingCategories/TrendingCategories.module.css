@@ -1,17 +1,16 @@
 /* Trending Categories Section */
 .trendingSection {
-  position: relative;
-  padding: 3rem 2rem;
+  width: 90%;
+  border-radius: 1rem;
   overflow: hidden;
-  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr ;
+  height: 70vh;
+  min-height: 700px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Background Decorations */
-.backgroundDecor {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
 
 @keyframes pulseGlow {
   0%, 100% {
@@ -23,8 +22,6 @@
     transform: scale(1.1);
   }
 }
-
-/* Content */
 .content {
   position: relative;
   z-index: 1;

@@ -46,8 +46,10 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
   const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
 
   useEffect(() => {
+    // Reset when theme changes
     setImagesLoaded(false);
     
+    // Load only images for current theme
     const isLight = theme === "light";
     const imageSources = isLight 
       ? [centralLigth, avatarLigth1, avatarLigth2]
@@ -94,7 +96,7 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
   };
 
   return (
-    <div className={styles.layoutCard}>
+    <div className={styles.layoutCard} style={{ gridTemplateColumns: layoutCfg.gridTemplateColumns, height: layoutCfg.layoutCardHeight, minHeight: layoutCfg.layoutCardMinHeight }}>
       <div 
         className={styles.colLeft} 
         style={{ 
