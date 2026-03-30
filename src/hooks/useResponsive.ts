@@ -362,6 +362,8 @@ export const HomeConfig: Record<ViewportSize, {
 
 export const LayoutCardConfig: Record<ViewportSize, {
   flexDirection: 'row' | 'column';
+  platformTabsDirection: 'row' | 'column';
+  tabBtnWidth: string;
   colLeftWidth: string;
   colMidWidth: string;
   colRightWidth: string;
@@ -391,6 +393,8 @@ export const LayoutCardConfig: Record<ViewportSize, {
   skeletonAvatarRight: string;
 }> = {
   desktop: {
+    platformTabsDirection: 'row',
+    tabBtnWidth: 'auto',
     flexDirection: 'row',
     colLeftWidth: '33.33%',
     colMidWidth: '33.33%',
@@ -421,6 +425,8 @@ export const LayoutCardConfig: Record<ViewportSize, {
     skeletonAvatarRight: '3rem',
   },
   tablet: {
+    platformTabsDirection: 'row',
+    tabBtnWidth: 'auto',
     flexDirection: 'column',
     colLeftWidth: '100%',
     colMidWidth: '100%',
@@ -451,6 +457,8 @@ export const LayoutCardConfig: Record<ViewportSize, {
     skeletonAvatarRight: '2.5rem',
   },
   mobile: {
+    platformTabsDirection: 'column',
+    tabBtnWidth: '100%',
     flexDirection: 'column',
     colLeftWidth: '100%',
     colMidWidth: '100%',
@@ -481,6 +489,8 @@ export const LayoutCardConfig: Record<ViewportSize, {
     skeletonAvatarRight: '4rem',
   },
   smallMobile: {
+    platformTabsDirection: 'column',
+    tabBtnWidth: '100%',
     flexDirection: 'column',
     colLeftWidth: '100%',
     colMidWidth: '100%',
