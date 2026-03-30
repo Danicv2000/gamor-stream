@@ -46,8 +46,10 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
   const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
 
   useEffect(() => {
+    // Reset when theme changes
     setImagesLoaded(false);
     
+    // Load only images for current theme
     const isLight = theme === "light";
     const imageSources = isLight 
       ? [centralLigth, avatarLigth1, avatarLigth2]
@@ -94,7 +96,7 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
   };
 
   return (
-    <div className={styles.layoutCard}>
+    <div className={styles.layoutCard} style={{ gridTemplateColumns: layoutCfg.gridTemplateColumns, height: layoutCfg.layoutCardHeight, minHeight: layoutCfg.layoutCardMinHeight }}>
       <div 
         className={styles.colLeft} 
         style={{ 
@@ -409,13 +411,13 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
               <h3 className={styles.sectionLabel}>01.</h3>
               <p className={styles.sectionText}> Choose Platform</p>
             </div>
-            <div className={styles.platformTabs} style={{ flexDirection: layoutCfg.platformTabsDirection }}>
+            <div className={styles.platformTabs}>
               <button
                 className={`${styles.tabBtn} ${
                   selectedPlatform === "party" ? styles.active : ""
                 }`}
                 onClick={() => setSelectedPlatform("party")}
-                style={{ fontSize: layoutCfg.tabFontSize, padding: layoutCfg.tabPadding, width: layoutCfg.tabBtnWidth }}
+                style={{ fontSize: layoutCfg.tabFontSize, padding: layoutCfg.tabPadding }}
               >
                 <PartyIcon />
                 Party
@@ -425,7 +427,7 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
                   selectedPlatform === "matches" ? styles.active : ""
                 }`}
                 onClick={() => setSelectedPlatform("matches")}
-                style={{ fontSize: layoutCfg.tabFontSize, padding: layoutCfg.tabPadding, width: layoutCfg.tabBtnWidth }}
+                style={{ fontSize: layoutCfg.tabFontSize, padding: layoutCfg.tabPadding }}
               >
                 Matchs
               </button>
@@ -434,7 +436,7 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
                   selectedPlatform === "streams" ? styles.active : ""
                 }`}
                 onClick={() => setSelectedPlatform("streams")}
-                style={{ fontSize: layoutCfg.tabFontSize, padding: layoutCfg.tabPadding, width: layoutCfg.tabBtnWidth }}
+                style={{ fontSize: layoutCfg.tabFontSize, padding: layoutCfg.tabPadding }}
               >
                 Streams
               </button>

@@ -3,7 +3,7 @@
   border-radius: 1rem;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr ;
   height: 70vh;
   min-height: 700px;
 }
@@ -472,29 +472,25 @@
 /* --- Right Column (ColRight) --- */
 .colRight {
   background-color: var(--surface-bg);
-  padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   min-width: 0;
   overflow: hidden;
-  border-left: 1px solid var(--border-color);
 }
 
 @media (prefers-color-scheme: dark) {
   .colLeft {
     background-color: var(--card-bg);
-    border-left: 1px solid var(--surface-dark);
   }
   .colRight {
     background-color: var(--card-bg);
-    border-left: 1px solid var(--surface-dark);
   }
 }
 
 .colRightContent {
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -540,9 +536,8 @@
 .platformTabs {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   background-color: var(--bg-main);
-  padding: 0.375rem;
+  padding: 0.3rem;
   border-radius: 2rem;
 }
 

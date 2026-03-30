@@ -66,10 +66,10 @@ export const EllipseConfig: Record<ViewportSize, {
   translateY: string;
 }> = {
   desktop: {
-    width: '25rem',
+    width: '20rem',
     height: '30rem',
     left: '2.5rem',
-    top: '10%',
+    top: '5%',
     translateX: '-50px',
     translateY: '-70px',
   },
@@ -105,9 +105,9 @@ export const TitleConfig: Record<ViewportSize, {
   padding: string;
 }> = {
   desktop: {
-    fontSize: '4.5rem',
+    fontSize: '3rem',
     subtitleFontSize: '0.875rem',
-    padding: '2.5rem 4rem',
+    padding: '2rem 3rem',
   },
   tablet: {
     fontSize: '3rem',
@@ -176,35 +176,30 @@ export const GridConfig: Record<ViewportSize, {
 };
 
 export const TrendingSectionConfig: Record<ViewportSize, {
-  padding: string;
   titleFontSize: string;
   categoryMinHeight: string;
   categoryNameFontSize: string;
   contentPaddingLeft: string;
 }> = {
   desktop: {
-    padding: '3rem 2rem',
     titleFontSize: '2rem',
     categoryMinHeight: '200px',
     categoryNameFontSize: '1rem',
     contentPaddingLeft: '-2rem',
   },
   tablet: {
-    padding: '2rem 1rem',
     titleFontSize: '1.5rem',
     categoryMinHeight: '160px',
     categoryNameFontSize: '0.875rem',
     contentPaddingLeft: '0',
   },
   mobile: {
-    padding: '2rem 1rem',
     titleFontSize: '1.5rem',
     categoryMinHeight: '160px',
     categoryNameFontSize: '0.875rem',
     contentPaddingLeft: '0',
   },
   smallMobile: {
-    padding: '1.5rem 0.75rem',
     titleFontSize: '1.25rem',
     categoryMinHeight: '140px',
     categoryNameFontSize: '0.8rem',
@@ -295,8 +290,8 @@ export const MainLayoutConfig: Record<ViewportSize, {
     mainPadding: '0.5rem',
     navbarGap: '2rem',
     navbarDirection: 'row',
-    navbarPaddingLeft: '15rem',
-    navbarWidth: '75%',
+    navbarPaddingLeft: '11rem',
+    navbarWidth: '80%',
   },
   tablet: {
     headerPadding: '1rem 1rem',
@@ -364,12 +359,16 @@ export const LayoutCardConfig: Record<ViewportSize, {
   flexDirection: 'row' | 'column';
   platformTabsDirection: 'row' | 'column';
   tabBtnWidth: string;
-  colLeftWidth: string;
-  colMidWidth: string;
-  colRightWidth: string;
+  gridTemplateColumns: string;
+  layoutCardHeight: string;
+  layoutCardMinHeight: string;
   colLeftMinHeight: string;
   colMidMinHeight: string;
   colRightMinHeight: string;
+  colLeftWidth: string;
+  colMidWidth: string;
+  colRightWidth: string;
+  colLeftPadding: string;
   colRightJustifyContent: string;
   colRightPadding: string;
   heroImageHeight: string;
@@ -396,14 +395,18 @@ export const LayoutCardConfig: Record<ViewportSize, {
     platformTabsDirection: 'row',
     tabBtnWidth: 'auto',
     flexDirection: 'row',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    layoutCardHeight: '70vh',
+    layoutCardMinHeight: '700px',
     colLeftWidth: '33.33%',
     colMidWidth: '33.33%',
     colRightWidth: '33.33%',
     colLeftMinHeight: 'auto',
     colMidMinHeight: 'auto',
     colRightMinHeight: 'auto',
+    colLeftPadding: '0',
     colRightJustifyContent: 'flex-start',
-    colRightPadding: '2rem',
+    colRightPadding: '0.5rem',
     heroImageHeight: '500px',
     heroTitleSize: '2rem',
     badgePadding: '1.5rem 2.5rem 1.5rem 4rem',
@@ -428,12 +431,16 @@ export const LayoutCardConfig: Record<ViewportSize, {
     platformTabsDirection: 'row',
     tabBtnWidth: 'auto',
     flexDirection: 'column',
+    gridTemplateColumns: '1fr',
+    layoutCardHeight: 'auto',
+    layoutCardMinHeight: 'auto',
     colLeftWidth: '100%',
     colMidWidth: '100%',
     colRightWidth: '100%',
-    colLeftMinHeight: 'auto',
-    colMidMinHeight: '300px',
-    colRightMinHeight: 'auto',
+    colLeftMinHeight: '300px',
+    colMidMinHeight: '350px',
+    colRightMinHeight: '400px',
+    colLeftPadding: '1.5rem',
     colRightJustifyContent: 'center',
     colRightPadding: '1rem',
     heroImageHeight: '250px',
@@ -460,12 +467,16 @@ export const LayoutCardConfig: Record<ViewportSize, {
     platformTabsDirection: 'column',
     tabBtnWidth: '100%',
     flexDirection: 'column',
+    gridTemplateColumns: '1fr',
+    layoutCardHeight: 'auto',
+    layoutCardMinHeight: 'auto',
     colLeftWidth: '100%',
     colMidWidth: '100%',
     colRightWidth: '100%',
-    colLeftMinHeight: 'auto',
+    colLeftMinHeight: '300px',
     colMidMinHeight: '350px',
-    colRightMinHeight: 'auto',
+    colRightMinHeight: '400px',
+    colLeftPadding: '1.5rem',
     colRightJustifyContent: 'center',
     colRightPadding: '0.5rem',
     heroImageHeight: '180px',
@@ -492,12 +503,16 @@ export const LayoutCardConfig: Record<ViewportSize, {
     platformTabsDirection: 'column',
     tabBtnWidth: '100%',
     flexDirection: 'column',
+    gridTemplateColumns: '1fr',
+    layoutCardHeight: 'auto',
+    layoutCardMinHeight: 'auto',
     colLeftWidth: '100%',
     colMidWidth: '100%',
     colRightWidth: '100%',
     colLeftMinHeight: '250px',
     colMidMinHeight: '300px',
-    colRightMinHeight: 'auto',
+    colRightMinHeight: '400px',
+    colLeftPadding: '1.5rem',
     colRightJustifyContent: 'center',
     colRightPadding: '0.75rem',
     heroImageHeight: '150px',

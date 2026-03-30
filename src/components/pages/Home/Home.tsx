@@ -24,7 +24,9 @@ export const Home: React.FC<HomeProps> = ({ theme = "dark" }) => {
           justifyContent: config.layoutCardJustifyContent
         }}
       >
-        <LayoutCard theme={theme} />
+        <div className={styles.layoutWrapper}>
+          <LayoutCard theme={theme} />
+        </div>
         
         <div className={styles.trendingWrapper}>
           <TrendingCategories theme={theme as string} />

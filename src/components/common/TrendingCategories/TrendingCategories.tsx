@@ -58,7 +58,6 @@ export const TrendingCategories: React.FC<TrendingCategoriesProps> = ({ theme = 
   return (
     <div 
       className={`${styles.trendingSection} ${isLight ? styles.lightTheme : ""}`}
-      style={{ padding: sectionConfig.padding }}
     >
       <div className={styles.backgroundDecor}>
         <div className={styles.glowOrb1}></div>
