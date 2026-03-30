@@ -48,6 +48,12 @@ export const TrendingCategories: React.FC<TrendingCategoriesProps> = ({ theme = 
 
   const currentCategories = categories;
   const isLight = theme === "light";
+  const getRandomColor = () => {
+    const h = Math.floor(Math.random() * 360); 
+    const s = Math.floor(Math.random() * 40) + 60; 
+    const l = Math.floor(Math.random() * 40) + 30;
+    return `hsl(${h}, ${s}%, ${l}%)`;
+  };
 
   return (
     <div 
@@ -66,7 +72,7 @@ export const TrendingCategories: React.FC<TrendingCategoriesProps> = ({ theme = 
           className={styles.sectionTitle}
           style={{ fontSize: sectionConfig.titleFontSize }}
         >
-          <span className={styles.titleAccent}>Trending</span> Categories
+          Trending Categories
         </h2>
         
         <div 
@@ -89,7 +95,7 @@ export const TrendingCategories: React.FC<TrendingCategoriesProps> = ({ theme = 
               <div className={styles.colorHover}></div>
               
               <div className={styles.categoryContent}>
-                <span className={styles.categoryId}>/ {category.id}</span>
+                <span className={styles.categoryId}><span style={{ color: getRandomColor() }}>/</span> {category.id}</span>
                 <div className={styles.categoryTextContent}>
                   <span 
                     className={styles.categoryName}

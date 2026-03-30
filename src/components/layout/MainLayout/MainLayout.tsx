@@ -1,4 +1,4 @@
-import React, { cloneElement,useEffect, useState, type ReactNode } from "react";
+import React, { cloneElement, useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import { useResponsive, MainLayoutConfig } from "../../../hooks/useResponsive";
@@ -12,8 +12,10 @@ interface MainLayoutProps {
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const { user, logout, isAuthenticated } = useAuth();
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [menuOpen, setMenuOpen] = useState(false);
   const { size } = useResponsive();
   const config = MainLayoutConfig[size];
+  const isMobile = size === "mobile" || size === "smallMobile";
 
   useEffect(() => {
     const savedTheme =
@@ -35,131 +37,155 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
   return (
     <div className={styles.mainLayout}>
-      <header 
+      <header
         className={styles.header}
         style={{ padding: config.headerPadding }}
       >
-        <nav 
-          className={styles.navbar}
-          style={{ 
-            flexDirection: config.navbarDirection,
-            gap: config.navbarGap,
-            paddingLeft: config.navbarPaddingLeft,
-            width: config.navbarWidth
-          }}
-        >
-          <div className={styles.navLeft}>
-            <Link to="/" className={styles.homeLink}>
-              Home
-              <svg
-                className={styles.svgEllipse}
-                fill="none"
-                viewBox="0 0 100 40"
-                xmlns="http://www.w3.org/2000/svg"
+        {isMobile ? (
+          /* ── MOBILE HEADER ── */
+          <div className={styles.mobileNav}>
+            <Link to="/" className={styles.logo} style={{ fontSize: config.logoFontSize }}>
+              Gamor
+            </Link>
+            <div className={styles.mobileActions}>
+              <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Cambiar tema">
+                {theme === "dark" ? (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                  </svg>
+                )}
+              </button>
+              <button
+                className={styles.hamburger}
+                onClick={() => setMenuOpen((o) => !o)}
+                aria-label="Abrir menú"
               >
-                <path
-                  d="M 0 15 A 40 20 0 0 1 90 10 L 90 10 A 40 20 0 0 1 0 10 Z"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                ></path>
-              </svg>
-            </Link>
-            <Link to="/" className={styles.links}>
-              Streams
-            </Link>
-            <Link to="/" className={styles.links}>
-              Party
-            </Link>
-            <Link to="/" className={styles.links}>
-              Premium
-            </Link>
-          </div>
-          <Link 
-            to="/" 
-            className={styles.logo}
-            style={{ fontSize: config.logoFontSize }}
-          >
-            Gamor
-          </Link>
-          <div className={styles.navLinks}>
-            {isAuthenticated ? (
-              <>
-                <span className={styles.userName}>Hola, {user?.name}</span>
-                <SvgAvatar
-                  seed={`${user?.name}_avatar_1`}
-                  size={30}
-                  className={styles.avatarSm}
-                />
-                <button 
-                  onClick={handleLogout} 
-                  className={styles.logoutBtn}
-                  style={{ 
-                    padding: config.navLinkPadding,
-                    fontSize: config.navLinkFontSize
-                  }}
-                >
-                  Cerrar sesión
-                </button>
-              </>
-            ) : (
-              <>
-                <Link 
-                  to="/login" 
-                  className={styles.navLink}
-                  style={{ 
-                    padding: config.navLinkPadding,
-                    fontSize: config.navLinkFontSize
-                  }}
-                >
-                  Sign in
-                </Link>
-                <Link to="/register" className={styles.navCreateLink}>
-                  Create account
-                </Link>
-              </>
-            )}
-          </div>
+                {menuOpen ? (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </svg>
+                )}
+              </button>
+            </div>
 
-          <button
-            onClick={toggleTheme}
-            className={styles.themeToggle}
-            aria-label="Cambiar tema"
-          >
-            {theme === "dark" ? (
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-              </svg>
-            ) : (
-              // Icono LUNA (se muestra en modo light)
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="black"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
+            {/* Bubble menu */}
+            {menuOpen && (
+              <>
+                <div className={styles.drawerOverlay} onClick={() => setMenuOpen(false)} />
+                <div className={styles.bubbleMenu}>
+                  <div className={styles.bubbleTail} />
+                  <nav className={styles.drawerLinks}>
+                    <Link to="/" className={styles.drawerLink} onClick={() => setMenuOpen(false)}>Home</Link>
+                    <Link to="/" className={styles.drawerLink} onClick={() => setMenuOpen(false)}>Streams</Link>
+                    <Link to="/" className={styles.drawerLink} onClick={() => setMenuOpen(false)}>Party</Link>
+                    <Link to="/" className={styles.drawerLink} onClick={() => setMenuOpen(false)}>Premium</Link>
+                  </nav>
+                  <div className={styles.drawerDivider} />
+                  <div className={styles.drawerAuth}>
+                    {isAuthenticated ? (
+                      <>
+                        <div className={styles.drawerUser}>
+                          <SvgAvatar seed={`${user?.name}_avatar_1`} size={32} className={styles.avatarSm} />
+                          <span className={styles.userName}>{user?.name}</span>
+                        </div>
+                        <button onClick={() => { handleLogout(); setMenuOpen(false); }} className={styles.drawerLogout}>
+                          Cerrar sesión
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <Link to="/login" className={styles.drawerAuthLink} onClick={() => setMenuOpen(false)}>Sign in</Link>
+                        <Link to="/register" className={styles.drawerCreateLink} onClick={() => setMenuOpen(false)}>Create account</Link>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </>
             )}
-          </button>
-        </nav>
+          </div>
+        ) : (
+          /* ── DESKTOP HEADER ── */
+          <nav
+            className={styles.navbar}
+            style={{
+              flexDirection: config.navbarDirection,
+              gap: config.navbarGap,
+              paddingLeft: config.navbarPaddingLeft,
+              width: config.navbarWidth,
+            }}
+          >
+            <div className={styles.navLeft}>
+              <Link to="/" className={styles.homeLink}>
+                Home
+                <svg className={styles.svgEllipse} fill="none" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 0 15 A 40 20 0 0 1 90 10 L 90 10 A 40 20 0 0 1 0 10 Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"></path>
+                </svg>
+              </Link>
+              <Link to="/" className={styles.links}>Streams</Link>
+              <Link to="/" className={styles.links}>Party</Link>
+              <Link to="/" className={styles.links}>Premium</Link>
+            </div>
+            <Link to="/" className={styles.logo} style={{ fontSize: config.logoFontSize }}>
+              Gamor
+            </Link>
+            <div className={styles.navLinks}>
+              {isAuthenticated ? (
+                <>
+                  <span className={styles.userName}>Hola, {user?.name}</span>
+                  <SvgAvatar seed={`${user?.name}_avatar_1`} size={30} className={styles.avatarSm} />
+                  <button onClick={handleLogout} className={styles.logoutBtn} style={{ padding: config.navLinkPadding, fontSize: config.navLinkFontSize }}>
+                    Cerrar sesión
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className={styles.navLink} style={{ padding: config.navLinkPadding, fontSize: config.navLinkFontSize }}>
+                    Sign in
+                  </Link>
+                  <Link to="/register" className={styles.navCreateLink}>Create account</Link>
+                </>
+              )}
+            </div>
+            <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Cambiar tema">
+              {theme === "dark" ? (
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              )}
+            </button>
+          </nav>
+        )}
       </header>
       <main 
         className={styles.mainContent}

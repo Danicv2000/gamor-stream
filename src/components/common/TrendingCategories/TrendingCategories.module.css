@@ -32,17 +32,12 @@
 
 .sectionTitle {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 2rem;
   text-align: left;
 }
 
-.titleAccent {
-  color: var(--primary);
-}
-
-/* Categories Container - Grid */
 .categoriesContainer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -50,7 +45,6 @@
   padding: 1rem 0.5rem;
 }
 
-/* Category Card */
 .categoryCard {
   border-radius: 1rem;
   background: transparent;
@@ -112,7 +106,6 @@
 }
 
 .categoryCard:hover {
-  border-color: var(--bg-card);
   transform: translateY(-8px) scale(1.02);
   box-shadow: 
     0 20px 40px rgba(166, 13, 242, 0.3),
@@ -159,7 +152,7 @@
 .categoryId {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -167,7 +160,7 @@
 .categoryViewAll {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--text-primary);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -213,13 +206,10 @@
 
 .lightTheme .categoryCard {
   background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Dark Theme - Cards con fondo gris */
 .categoryCard {
-  background: var(--surface-bg);
-  border: 1px solid var(--border-color);
+  background: var(--card-bg);
 }
 
 .lightTheme .categoryName {
