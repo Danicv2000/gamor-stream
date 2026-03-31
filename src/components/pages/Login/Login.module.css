@@ -196,6 +196,28 @@
   transform: translateY(-1px);
 }
 
+.backToHome {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.backToHome:hover {
+  color: var(--primary);
+}
+
+.backToHome svg {
+  width: 1rem;
+  height: 1rem;
+}
+
 .footer {
   margin-top: 1.5rem;
   font-size: 0.875rem;
