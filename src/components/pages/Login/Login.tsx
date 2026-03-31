@@ -4,6 +4,8 @@ import { useAuth } from "../../../hooks/useAuth";
 import { useResponsive, AuthPageConfig } from "../../../hooks/useResponsive";
 import styles from "./Login.module.css";
 import type { LoginCredentials } from "../../../types/auth";
+// Import images components
+import Image from "../../../assets/images/Fortnite-Valentines-day.avif"
 
 export const Login: React.FC = () => {
   const [formData, setFormData] = useState<LoginCredentials>({
@@ -88,7 +90,7 @@ export const Login: React.FC = () => {
 
         <div className={styles.imageContainer}>
           <img
-            src="https://www.dexerto.com/cdn-image/wp-content/uploads/2025/02/09/Fortnite-Valentines-day.jpg?width=1200&quality=75&format=auto  "
+            src={Image}
             alt="Gaming Background"
             className={styles.heroImage}
           />
@@ -103,6 +105,13 @@ export const Login: React.FC = () => {
         }}
       >
         <div className={styles.formWrapper}>
+          <div className={styles.backToHome} onClick={() => navigate("/")}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+          </div>
+
           <div className={styles.formHeader}>
             <h2 className={styles.title}>Sign In</h2>
             <p className={styles.subtitle}>Enter your credentials to access your account</p>

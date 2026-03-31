@@ -4,6 +4,8 @@ import { useAuth } from "../../../hooks/useAuth";
 import { useResponsive, AuthPageConfig } from "../../../hooks/useResponsive";
 import styles from "./Register.module.css";
 import type { RegisterData } from "../../../types/auth";
+// Import images components
+import Image from "../../../assets/images/4D1yYP8.webp"
 
 export const Register: React.FC = () => {
   const [formData, setFormData] = useState<RegisterData>({
@@ -116,6 +118,13 @@ export const Register: React.FC = () => {
         </div>
 
         <div className={styles.formWrapper}>
+          <div className={styles.backToHome} onClick={() => navigate("/")}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+          </div>
+
           <h2 className={styles.title}>Create Account</h2>
           <p className={styles.subtitle}>Join the arena and start streaming</p>
 
@@ -237,7 +246,7 @@ export const Register: React.FC = () => {
         }}
       >
         <img
-          src="https://imgs.search.brave.com/_9oW3LyOG8lO-KgtVknAjB4oiHb4mhbkdvcbsMPTJC4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/d2FsbHBhcGVyc2Fm/YXJpLmNvbS85OS8x/My80RDF5WVA4Lndl/YnA"
+          src={Image}
           alt="Gaming Background"
           className={styles.bgImage}
         />

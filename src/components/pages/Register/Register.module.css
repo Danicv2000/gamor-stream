@@ -207,3 +207,24 @@
   font-size: 0.875rem;
   color: var(--text-secondary);
 }
+
+.backToHome {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.backToHome:hover {
+  color: var(--primary);
+}
+
+.backToHome svg {
+  width: 1rem;
+  height: 1rem;
+}
