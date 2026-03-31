@@ -301,8 +301,7 @@
   animation-delay: 1s;
 }
 
-.avatar1.slideUp,
-.avatar1.slideDown {
+.avatar1.slideUp {
   position: absolute;
   left: 1rem;
   top: 55%;
@@ -310,7 +309,21 @@
   height: 6rem;
 }
 
-.avatar2.slideUp,
+.avatar1.slideDown {
+  position: absolute;
+  left: 1rem;
+  top: 5%;
+  width: 6rem;
+  height: 6rem;
+}
+
+.avatar2.slideUp{
+  position: absolute;
+  right: 1rem;
+  top: 30%;
+  width: 6rem;
+}
+
 .avatar2.slideDown {
   position: absolute;
   right: 1rem;
