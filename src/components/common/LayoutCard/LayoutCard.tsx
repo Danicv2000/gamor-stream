@@ -44,26 +44,15 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
     "Fortnite New Season",
   );
   const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
+  const [showFloatAnimation, setShowFloatAnimation] = useState<boolean>(false);
+  const [avatarKey, setAvatarKey] = useState<number>(Date.now());
 
   useEffect(() => {
-    // Reset when theme changes
-    setImagesLoaded(false);
-    
-    // Load only images for current theme
-    const isLight = theme === "light";
-    const imageSources = isLight 
-      ? [centralLigth, avatarLigth1, avatarLigth2]
-      : [centralDark, avatarDark1, avatarDark2];
-
+    const allImages = [centralLigth, avatarLigth1, avatarLigth2, centralDark, avatarDark1, avatarDark2];
     let loadedCount = 0;
-    const totalImages = imageSources.length;
+    const totalImages = allImages.length;
 
-    if (totalImages === 0) {
-      setImagesLoaded(true);
-      return;
-    }
-
-    imageSources.forEach((src) => {
+    allImages.forEach((src) => {
       const img = new Image();
       img.onload = () => {
         loadedCount++;
@@ -79,7 +68,16 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
       };
       img.src = src;
     });
-  }, [theme]);
+  }, []);
+
+  useEffect(() => {
+    setShowFloatAnimation(false);
+    setAvatarKey(Date.now());
+    const timer = setTimeout(() => {
+      setShowFloatAnimation(true);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, [theme, imagesLoaded]);
 
   const currentPlayers =
     playersData[selectedPlatform as keyof typeof playersData] || [];
@@ -245,7 +243,8 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
                 </div>
               </div>
               <div
-                className={`${styles.skeletonFloatingAvatar} ${styles.skeletonAvatar1}`}
+                className={`${styles.skeletonFloatingAvatar} ${styles.skeletonAvatar1} ${showFloatAnimation ? styles.floatAnimation : ''}`}
+                key={`skeleton-avatar1-${avatarKey}`}
                 style={{ 
                   width: layoutCfg.skeletonAvatarWidth, 
                   height: layoutCfg.skeletonAvatarHeight,
@@ -265,7 +264,8 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
               </div>
 
               <div
-                className={`${styles.skeletonFloatingAvatar} ${styles.skeletonAvatar2}`}
+                className={`${styles.skeletonFloatingAvatar} ${styles.skeletonAvatar2} ${showFloatAnimation ? styles.floatAnimation : ''}`}
+                key={`skeleton-avatar2-${avatarKey}`}
                 style={{ 
                   width: layoutCfg.skeletonAvatarWidth, 
                   height: layoutCfg.skeletonAvatarHeight,
@@ -294,8 +294,8 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
               />
 
               <div
-                className={`${styles.floatingAvatar} ${styles.avatar1} ${styles.lightOnly} ${styles.slideUp}`}
-                key="avatar1-light"
+                className={`${styles.floatingAvatar} ${styles.avatar1} ${styles.lightOnly} ${styles.slideUp} ${showFloatAnimation ? styles.floatAnimation : ''}`}
+                key={`avatar1-light-${avatarKey}`}
                 style={{ 
                   width: layoutCfg.floatingAvatarWidth, 
                   height: layoutCfg.floatingAvatarHeight 
@@ -320,8 +320,8 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
               </div>
 
               <div
-                className={`${styles.floatingAvatar} ${styles.avatar2} ${styles.lightOnly} ${styles.slideDown}`}
-                key="avatar2-light"
+                className={`${styles.floatingAvatar} ${styles.avatar2} ${styles.lightOnly} ${styles.slideDown} ${showFloatAnimation ? styles.floatAnimation : ''}`}
+                key={`avatar2-light-${avatarKey}`}
                 style={{ 
                   width: layoutCfg.floatingAvatarWidth, 
                   height: layoutCfg.floatingAvatarHeight 
@@ -344,8 +344,8 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
               />
 
               <div
-                className={`${styles.floatingAvatar} ${styles.avatar1} ${styles.darkOnly} ${styles.slideDown}`}
-                key="avatar1-dark"
+                className={`${styles.floatingAvatar} ${styles.avatar1} ${styles.darkOnly} ${styles.slideDown} ${showFloatAnimation ? styles.floatAnimation : ''}`}
+                key={`avatar1-dark-${avatarKey}`}
                 style={{ 
                   width: layoutCfg.floatingAvatarWidth, 
                   height: layoutCfg.floatingAvatarHeight 
@@ -359,8 +359,8 @@ export const LayoutCard: React.FC<LayoutCardProps> = ({ theme = "dark" }) => {
               </div>
 
               <div
-                className={`${styles.floatingAvatar} ${styles.avatar2} ${styles.darkOnly} ${styles.slideUp}`}
-                key="avatar2-dark"
+                className={`${styles.floatingAvatar} ${styles.avatar2} ${styles.darkOnly} ${styles.slideUp} ${showFloatAnimation ? styles.floatAnimation : ''}`}
+                key={`avatar2-dark-${avatarKey}`}
                 style={{ 
                   width: layoutCfg.floatingAvatarWidth, 
                   height: layoutCfg.floatingAvatarHeight 

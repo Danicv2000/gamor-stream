@@ -1,4 +1,4 @@
-/* Trending Categories Section */
+
 .trendingSection {
   width: 90%;
   border-radius: 1rem;
@@ -104,9 +104,6 @@
 
 .categoryCard:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 
-    0 20px 40px rgba(166, 13, 242, 0.3),
-    0 0 20px rgba(166, 13, 242, 0.2);
 }
 
 .categoryCard:active {

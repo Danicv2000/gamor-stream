@@ -278,7 +278,11 @@
   border-radius: 0.75rem;
   padding-top: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.floatingAvatar.floatAnimation {
   animation: float 3s ease-in-out infinite;
+  animation-delay: 0.8s;
 }
 
 .avatar1 {
@@ -286,6 +290,7 @@
   top: 55%;
   width: 6rem;
   height: 6rem;
+  animation-delay: 0.8s;
 }
 
 .avatar2 {
@@ -293,18 +298,49 @@
   top: 15%;
   width: 6rem;
   height: 6rem;
+  animation-delay: 1s;
 }
 
-[data-theme="dark"] .avatar1 {
-  left: 1em;
+.avatar1.slideUp {
+  position: absolute;
+  left: 1rem;
+  top: 55%;
+  width: 6rem;
+  height: 6rem;
+}
+
+.avatar1.slideDown {
+  position: absolute;
+  left: 1rem;
   top: 5%;
   width: 6rem;
   height: 6rem;
 }
 
-[data-theme="dark"] .avatar2 {
+.avatar2.slideUp{
+  position: absolute;
   right: 1rem;
   top: 30%;
+  width: 6rem;
+}
+
+.avatar2.slideDown {
+  position: absolute;
+  right: 1rem;
+  top: 15%;
+  width: 6rem;
+}
+
+[data-theme="dark"] .avatar1:not(.slideUp):not(.slideDown) {
+  left: 1rem;
+  top: 5%;
+  width: 6rem;
+  height: 6rem;
+}
+
+[data-theme="dark"] .avatar2:not(.slideUp):not(.slideDown) {
+  left: 1rem;
+  top: 5%;
   width: 6rem;
   height: 6rem;
 }
@@ -348,12 +384,14 @@
 }
 
 @keyframes float {
-  0%,
-  100% {
+  0% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 
@@ -410,8 +448,11 @@
   border-radius: 0.75rem;
   padding-top: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: float 3s ease-in-out infinite;
   overflow: hidden;
+}
+
+.skeletonFloatingAvatar.floatAnimation {
+  animation: float 3s ease-in-out infinite;
 }
 
 .skeletonAvatar1 {
@@ -419,6 +460,7 @@
   top: 55%;
   width: 6rem;
   height: 6rem;
+  animation-delay: 0.8s;
 }
 
 .skeletonAvatar2 {
@@ -426,6 +468,7 @@
   top: 25%;
   width: 6rem;
   height: 6rem;
+  animation-delay: 1s;
 }
 
 [data-theme="dark"] .skeletonAvatar1 {
